@@ -25,6 +25,6 @@ def read_item(twisty: int, cuddly: int, pushy: int, greasy: int, zappy: int):
     return {"twisty": twisty, "cuddly": cuddly, "pushy": pushy, "greasy": greasy, "zappy": zappy}
 
 if port:
-    uvicorn.run(app,port=port, debug=True)
+    uvicorn.run(app,port=port)
 else:
     uvicorn.run(app, host='127.0.0.1', port=8080, debug=True)
