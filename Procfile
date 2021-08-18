@@ -1,1 +1,1 @@
-web:gunicorn -w 4 -k uvicorn.workers.UvicornWorker :app
+web: uvicorn app:app --port=443

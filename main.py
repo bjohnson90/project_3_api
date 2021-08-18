@@ -1,9 +1,9 @@
 from typing import Optional
-
+import uvicorn
 from fastapi import FastAPI
 
 app = FastAPI()
-
+print("Up and running")
 
 @app.get("/")
 def read_root_healthcheck():
