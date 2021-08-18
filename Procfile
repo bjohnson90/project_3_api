@@ -1,1 +1,1 @@
-web: uvicorn app:app --host bj-project-3-api.herokuapp.com --port=80
+web:gunicorn -w 4 -k uvicorn.workers.UvicornWorker :app
