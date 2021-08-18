@@ -1,6 +1,12 @@
 from typing import Optional
 import uvicorn
 from fastapi import FastAPI
+import os
+
+if os.environ.get('PORT',None):
+    port = int(os.environ['PORT'])
+else:
+    port=None
 
 app = FastAPI()
 print("Up and running")
@@ -18,6 +24,7 @@ def read_item(twisty: int, cuddly: int, pushy: int, greasy: int, zappy: int):
     # XXX: Use model here
     return {"twisty": twisty, "cuddly": cuddly, "pushy": pushy, "greasy": greasy, "zappy": zappy}
 
-if __name__ == '__main__':
-
-    uvicorn.run(app, host='127.0.0.1', port=4000, debug=True)
+if port:
+    uvicorn.run(app,port=port, debug=True)
+else:
+    uvicorn.run(app, host='127.0.0.1', port=8080, debug=True)
