@@ -27,6 +27,6 @@ def read_root_healthcheck():
 
 
 @app.get("/model/{twisty}/{cuddly}/{pushy}/{greasy}/{zappy}")
-def read_item(twisty: int, cuddly: int, pushy: int, greasy: int, zappy: int):
+def read_item(twisty: float, cuddly: float, pushy: float, greasy: float, zappy: float):
     # XXX: Use model here
     return {"twisty": twisty, "cuddly": cuddly, "pushy": pushy, "greasy": greasy, "zappy": zappy}
