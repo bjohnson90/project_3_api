@@ -1,1 +1,1 @@
-web: uvicorn app:app --port=443
+web: uvicorn main:app --workers 4
