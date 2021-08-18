@@ -1,1 +1,1 @@
-web: uvicorn iris.app:app --host=0.0.0.0 --port=80
+web: uvicorn app:app --port=80
