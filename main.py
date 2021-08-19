@@ -1,5 +1,6 @@
 import os
 import pickle
+import sklearn
 from typing import Optional
 
 import uvicorn
