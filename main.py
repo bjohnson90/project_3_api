@@ -1,8 +1,10 @@
+import os
+import pickle
 from typing import Optional
+
 import uvicorn
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
-import os
 
 app = FastAPI()
 
@@ -16,6 +18,10 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
+with open("./model/random_forest_model.p", "rb") as f:
+
+    model = pickle.load(f)
+
 print("Up and running")
 
 @app.get("/")
@@ -25,8 +31,9 @@ def read_root_healthcheck():
     except:
         return {"Health": "DEAD"}
 
-
+# model/.85/20/1.9/-1.2/7 = 1
+# model/.65/20/.9/-1.2/5 = 0
 @app.get("/model/{twisty}/{cuddly}/{pushy}/{greasy}/{zappy}")
 def read_item(twisty: float, cuddly: float, pushy: float, greasy: float, zappy: float):
-    # XXX: Use model here
-    return {"twisty": twisty, "cuddly": cuddly, "pushy": pushy, "greasy": greasy, "zappy": zappy}
+    prediction = model.predict([[twisty,cuddly,pushy,zappy,greasy]]).tolist()[0]
+    return {"prediction": prediction}
